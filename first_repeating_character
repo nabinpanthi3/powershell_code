@@ -1,0 +1,26 @@
+function first_repeating_character {
+  [CmdletBinding()]
+  param (
+    [string]$string
+  )
+#creating hash table
+ $hash_table = @{}
+  
+#converting the string into lower case and character array
+ $converted_string= $string.ToLower().ToCharArray() 
+ foreach($letter in $converted_string)
+ {
+   if($hash_table.Keys -contains $letter){
+    #found the first recurring letter
+    Write-Host "The letter is: " $letter
+     break
+   }
+   else {
+       $hash_table[$letter]= $null
+   }
+ }
+}    
+
+
+
+#first_repeating_character -string 'eydvldafdteh'
